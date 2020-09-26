@@ -8,7 +8,9 @@ const Temperature = require('../models/Temperature');
 
 
 route.post('/bp', (req, res) => {
-	console.log("---called--")
+	console.log(req.body)
+	console.log(req.params)
+	console.log(req.query)
 	return res.json({ success: true})
 })
 
