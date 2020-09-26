@@ -12,7 +12,7 @@ route.post('/bp', async (req, res) => {
 	const max = req.body.max;
 
 	try {
-			const newBP = new BP({ min, max, date: Date.now()})
+			const newBP = new BP({ min, max })
 			console.log(newBP)
 			await newBP.save()
 			return res.json({ success: true})
@@ -26,7 +26,7 @@ route.post('/temperature', async (req, res) => {
 	const temperature = req.body.temperature
 
 	try {
-			const newTemp = new Temperature({ temperature, date: Date.now() })
+			const newTemp = new Temperature({ temperature })
 			console.log(newTemp)
 			await newTemp.save();
 			return res.json({ success: true})
@@ -41,7 +41,7 @@ route.post('/spo', async(req, res) => {
 	const bpm = req.body.bpm;
 
 	try {
-			const newSPO = new SPO({ spo2, bpm, date: Date.now()});
+			const newSPO = new SPO({ spo2, bpm});
 			console.log(SPO)
 			await newSPO.save()
 			return res.json({ success: true})
@@ -52,8 +52,13 @@ route.post('/spo', async(req, res) => {
 
 route.get('/bp', async (req, res) => {
 	const date = Date.now()
+	var start = new Date();
+	start.setHours(0,0,0,0);
+
+	var end = new Date();
+	end.setHours(23,59,59,999);
 	try {
-		const data = await BP.find({date: date});
+		const data = await BP.find({date: { $gte: start, $lte: end}});
 		return res.json({ success: true, data: data});
 	} catch (e) {
 		console.log(e)
@@ -63,8 +68,13 @@ route.get('/bp', async (req, res) => {
 
 route.get('/temperature', async (req, res) => {
 	const date = Date.now()
+	var start = new Date();
+	start.setHours(0,0,0,0);
+
+	var end = new Date();
+	end.setHours(23,59,59,999);
 	try {
-		const data = await Temperature.find({date: date});
+		const data = await Temperature.find({date: { $gte: start, $lte: end}});
 		return res.json({ success: true,data: data});
 	} catch (e) {
 		console.log(e)
@@ -73,9 +83,13 @@ route.get('/temperature', async (req, res) => {
 })
 
 route.get('/spo', async (req, res) => {
-	const date = Date.now()
+	var start = new Date();
+	start.setHours(0,0,0,0);
+
+	var end = new Date();
+	end.setHours(23,59,59,999);
 	try {
-		const data = await SPO.find({date: date});
+		const data = await SPO.find({date: { $gte: start, $lte: end}});
 		return res.json({ success: true, data: data});
 	} catch (e) {
 		console.log(e)
