@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const BPSchema = new Schema({
 	min:{type: Number},
 	max: {type: Number},
-	date: {type: Date, default: Date.now},
+	date: {type: Date, default: Date.now()},
 })
 
 
