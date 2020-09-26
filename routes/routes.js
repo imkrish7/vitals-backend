@@ -13,6 +13,7 @@ route.post('/bp', async (req, res) => {
 
 	try {
 			const newBP = new BP({ min, max})
+			console.log(newBP)
 			await newBP.save()
 			return res.json({ success: true})
 	} catch (e) {
@@ -26,6 +27,7 @@ route.post('/temperature', await (req, res) => {
 
 	try {
 			const newTemp = new Temperature({ temperature })
+			console.log(newTemp)
 			await newTemp.save();
 			return res.json({ success: true})
 	} catch (e) {
@@ -37,9 +39,11 @@ route.post('/temperature', await (req, res) => {
 route.post('/spo', async(req, res) => {
 	const spo2 = req.body.spo2;
 	const bpm = req.body.bpm;
+
 	try {
 			const newSPO = new SPO({ spo2, bpm});
-			await newSP.save()
+			console.log(SPO)
+			await newSPO.save()
 			return res.json({ success: true})
 	} catch (e) {
 		return res.status(500).json({ success: false, error: "Internal server error"})
