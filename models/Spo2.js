@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const SPOSchema = new Schema({
 	spo2:{type: Number},
 	bpm: {type: Number},
-	date: {type: Number, default: Date.now},
+	date: {type: Date, default: Date.now},
 })
 
 

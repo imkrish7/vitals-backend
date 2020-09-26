@@ -12,7 +12,7 @@ route.post('/bp', async (req, res) => {
 	const max = req.body.max;
 
 	try {
-			const newBP = new BP({ min, max})
+			const newBP = new BP({ min, max, date: Date.now()})
 			console.log(newBP)
 			await newBP.save()
 			return res.json({ success: true})
@@ -26,7 +26,7 @@ route.post('/temperature', async (req, res) => {
 	const temperature = req.body.temperature
 
 	try {
-			const newTemp = new Temperature({ temperature })
+			const newTemp = new Temperature({ temperature, date: Date.now() })
 			console.log(newTemp)
 			await newTemp.save();
 			return res.json({ success: true})
@@ -41,7 +41,7 @@ route.post('/spo', async(req, res) => {
 	const bpm = req.body.bpm;
 
 	try {
-			const newSPO = new SPO({ spo2, bpm});
+			const newSPO = new SPO({ spo2, bpm, date: Date.now()});
 			console.log(SPO)
 			await newSPO.save()
 			return res.json({ success: true})
