@@ -50,17 +50,34 @@ route.post('/spo', async(req, res) => {
 	}
 })
 
-route.get('/bp', (req, res) => {
-	console.log("called=========")
-	return res.json({ success: true})
+route.get('/bp', async (req, res) => {
+	const date = Date.now()
+	try {
+		const data = await BP.find({date: date});
+		return res.json({ success: true: data});
+	} catch (e) {
+		return res.status(500).json({ success: false, error: "Internal server error"})
+	}
 })
 
-route.get('/temperature', (req, res) => {
-	return res.json({ success: true})
+route.get('/temperature', async (req, res) => {
+	const date = Date.now()
+	try {
+		const data = await Temperature.find({date: date});
+		return res.json({ success: true: data});
+	} catch (e) {
+		return res.status(500).json({ success: false, error: "Internal server error"})
+	}
 })
 
-route.get('/spo', (req, res) => {
-	return res.json({ success: true})
+route.get('/spo', async (req, res) => {
+	const date = Date.now()
+	try {
+		const data = await SPO.find({date: date});
+		return res.json({ success: true: data});
+	} catch (e) {
+		return res.status(500).json({ success: false, error: "Internal server error"})
+	}
 })
 
 
