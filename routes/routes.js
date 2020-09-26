@@ -22,7 +22,7 @@ route.post('/bp', async (req, res) => {
 
 })
 
-route.post('/temperature', await (req, res) => {
+route.post('/temperature', async (req, res) => {
 	const temperature = req.body.temperature
 
 	try {
