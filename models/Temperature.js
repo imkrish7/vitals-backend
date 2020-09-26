@@ -4,8 +4,7 @@ const Schema = mongoose.Schema;
 
 const TemperatureSchema = new Schema({
 	temperature:{type: Number},
-	time: {type: Number},
-	date: {type: Number},
+	date: {type: Number, default: Date.now().toISOString()},
 })
 
 
