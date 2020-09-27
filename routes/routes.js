@@ -68,10 +68,9 @@ route.get('/temperature', async (req, res) => {
 	const date = req.query.date
 	console.log(date)
 	var start = new Date(date);
-
-
+	console.log(start)
 	var end = new Date(date);
-
+	console.log(end)
 	// console.log(, )
 	let dateSt = start.setHours(0,0,0,0);
 	let dateEn = end.setHours(23,59,59,999);
