@@ -52,6 +52,7 @@ route.get('/bp', async (req, res) => {
 	console.log(req.query)
 	console.log(req.params)
 	console.log(req.body)
+	console.log(req.data)
 	const date = req.query.date
 
 	var start = new Date();
