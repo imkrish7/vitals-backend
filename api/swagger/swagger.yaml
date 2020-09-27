@@ -1,0 +1,79 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: Vitals
+host: 'https://cryptic-ravine-14675.herokuapp.com'
+basePath: /vitals
+schemes:
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /bp:
+    get:
+      operationId: getAllBP
+      parameters:
+       - name: date
+         in: body
+         required: true
+      responses:
+        200:
+          description:  Get all BP
+    post:
+      operationId: postBP
+      parameters:
+        - name: min
+          in: body
+          required: true
+        - name: max
+          in: body
+          required: true
+      description: Blood pressure minimum and maximum we want save
+      responses:
+        200:
+          description: Bp was correctly saved
+  /temperature:
+    get:
+      operationId: getAllTemperature
+      parameters:
+       - name: date
+         in: body
+         required: true
+      responses:
+        200:
+          description:  Get all Temperature
+    post:
+      operationId: postTemperature
+      parameters:
+        - name: temperature
+          in: body
+          required: true
+      description: temperature we want save
+      responses:
+        200:
+          description: Temperature was correctly saved
+  /spo:
+    get:
+      operationId: getAllSPO2
+      parameters:
+       - name: date
+         in: body
+         required: true
+      responses:
+        200:
+          description:  Get all SPO
+    post:
+      operationId: postSPO
+      parameters:
+        - name: spo
+          required: true
+          in: body
+        - name: bpm
+          in: body
+          required: true
+      description:  spo2 and bpm we want save
+      responses:
+        200:
+          description: spo was correctly saved
