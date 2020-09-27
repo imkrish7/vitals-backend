@@ -40,7 +40,6 @@ route.post('/spo', async(req, res) => {
 
 	try {
 			const newSPO = new SPO({ spo2, bpm});
-			console.log(SPO)
 			await newSPO.save()
 			return res.json({ success: true})
 	} catch (e) {
@@ -90,7 +89,6 @@ route.get('/spo', async (req, res) => {
 
 	var end = new Date(date);
 	end.setHours(23,59,59,999);
-	console.log(end.toString(), start.toString())
 	try {
 		const data = await SPO.find({date: { $gte: start, $lte: end}});
 		return res.json({ success: true, data: data});
