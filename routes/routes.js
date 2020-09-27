@@ -66,7 +66,7 @@ route.get('/bp', async (req, res) => {
 
 route.get('/temperature', async (req, res) => {
 	const date = req.query.date
-
+	console.log(date)
 	var start = new Date(date);
 
 
