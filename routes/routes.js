@@ -72,9 +72,9 @@ route.get('/temperature', async (req, res) => {
 
 	var end = new Date(date);
 	end.setHours(23,59,59,999);
-	console.log(start.getTime(), end.getTime())
+	// console.log(, )
 	try {
-		const data = await Temperature.find({date: { $gte: start, $lte: end}});
+		const data = await Temperature.find({date: { $gte: start.getTime(), $lte: end.getTime()}});
 		console.log(data)
 		return res.json({ success: true,data: data});
 	} catch (e) {
