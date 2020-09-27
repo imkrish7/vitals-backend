@@ -49,10 +49,11 @@ route.post('/spo', async(req, res) => {
 })
 
 route.get('/bp', async (req, res) => {
-	const date = req.query.date
 	console.log(req.query)
 	console.log(req.params)
 	console.log(req.body)
+	const date = req.query.date
+
 	var start = new Date(date);
 	start.setHours(0,0,0,0);
 
