@@ -49,16 +49,12 @@ route.post('/spo', async(req, res) => {
 })
 
 route.get('/bp', async (req, res) => {
-	console.log(req.query)
-	console.log(req.params)
-	console.log(req.body)
-	console.log(req.data)
 	const date = req.query.date
 
-	var start = new Date();
+	var start = new Date(date);
 	start.setHours(0,0,0,0);
 
-	var end = new Date();
+	var end = new Date(date);
 	end.setHours(23,59,59,999);
 	try {
 		const data = await BP.find({date: { $gte: start, $lte: end}});
