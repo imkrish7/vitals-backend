@@ -75,6 +75,7 @@ route.get('/temperature', async (req, res) => {
 	// console.log(, )
 	let dateSt = parseInt(start.getTime())
 	let dateEn = parseInt(end.getTime())
+	console.log(dateSt, dateEn)
 	try {
 		const data = await Temperature.find({$and: [{date: { $gte:dateSt }}, {date:{ $lt: dateEn}}]});
 		console.log(data)
