@@ -13,7 +13,6 @@ route.post('/bp', async (req, res) => {
 
 	try {
 			const newBP = new BP({ min, max })
-			console.log(newBP)
 			await newBP.save()
 			return res.json({ success: true})
 	} catch (e) {
@@ -27,7 +26,6 @@ route.post('/temperature', async (req, res) => {
 
 	try {
 			const newTemp = new Temperature({ temperature })
-			console.log(newTemp)
 			await newTemp.save();
 			return res.json({ success: true})
 	} catch (e) {
@@ -51,11 +49,12 @@ route.post('/spo', async(req, res) => {
 })
 
 route.get('/bp', async (req, res) => {
-	const date = Date.now()
-	var start = new Date();
+	const date = req.query.date
+
+	var start = new Date(date);
 	start.setHours(0,0,0,0);
 
-	var end = new Date();
+	var end = new Date(date);
 	end.setHours(23,59,59,999);
 	try {
 		const data = await BP.find({date: { $gte: start, $lte: end}});
@@ -67,11 +66,12 @@ route.get('/bp', async (req, res) => {
 })
 
 route.get('/temperature', async (req, res) => {
-	const date = Date.now()
-	var start = new Date();
+	const date = req.query.date
+
+	var start = new Date(date);
 	start.setHours(0,0,0,0);
 
-	var end = new Date();
+	var end = new Date(date);
 	end.setHours(23,59,59,999);
 	try {
 		const data = await Temperature.find({date: { $gte: start, $lte: end}});
@@ -83,10 +83,12 @@ route.get('/temperature', async (req, res) => {
 })
 
 route.get('/spo', async (req, res) => {
-	var start = new Date();
+	const date = req.query.date
+
+	var start = new Date(date);
 	start.setHours(0,0,0,0);
 
-	var end = new Date();
+	var end = new Date(date);
 	end.setHours(23,59,59,999);
 	try {
 		const data = await SPO.find({date: { $gte: start, $lte: end}});
