@@ -90,7 +90,7 @@ route.get('/spo', async (req, res) => {
 
 	var end = new Date(date);
 	end.setHours(23,59,59,999);
-	console.log(end.toString(), start.toString)
+	console.log(end.toString(), start.toString())
 	try {
 		const data = await SPO.find({date: { $gte: start, $lte: end}});
 		return res.json({ success: true, data: data});
