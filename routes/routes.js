@@ -54,10 +54,10 @@ route.get('/bp', async (req, res) => {
 	console.log(req.body)
 	const date = req.query.date
 
-	var start = new Date(date);
+	var start = new Date();
 	start.setHours(0,0,0,0);
 
-	var end = new Date(date);
+	var end = new Date();
 	end.setHours(23,59,59,999);
 	try {
 		const data = await BP.find({date: { $gte: start, $lte: end}});
