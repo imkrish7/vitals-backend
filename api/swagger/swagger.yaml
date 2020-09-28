@@ -16,7 +16,7 @@ paths:
       operationId: getAllBP
       parameters:
        - name: date
-         in: body
+         in: query
          required: true
       responses:
         200:
@@ -39,7 +39,7 @@ paths:
       operationId: getAllTemperature
       parameters:
        - name: date
-         in: body
+         in: query
          required: true
       responses:
         200:
@@ -59,7 +59,7 @@ paths:
       operationId: getAllSPO2
       parameters:
        - name: date
-         in: body
+         in: query
          required: true
       responses:
         200:

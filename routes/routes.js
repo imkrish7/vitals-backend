@@ -66,17 +66,12 @@ route.get('/bp', async (req, res) => {
 
 route.get('/temperature', async (req, res) => {
 	const date = req.query.date
-	console.log(date)
 	var start = new Date(new Date(date).toLocaleDateString());
 
 	var end = new Date(new Date(date).toLocaleDateString());
 
-	// console.log(, )
 	let dateSt = start.setHours(0,0,0,0);
 	let dateEn = end.setHours(23,59,59,999);
-	console.log(start)
-	console.log(end)
-	console.log(dateSt, dateEn)
 	try {
 		const data = await Temperature.find({$and: [{date: { $gte:dateSt }}, {date:{ $lt: dateEn}}]});
 		console.log(data)
